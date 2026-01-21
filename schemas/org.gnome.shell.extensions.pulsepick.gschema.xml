@@ -1,0 +1,6 @@
+<schemalist>
+  <schema id="org.gnome.shell.extensions.pulsepick"
+          path="/org/gnome/shell/extensions/pulsepick/">
+  </schema>
+</schemalist>
+

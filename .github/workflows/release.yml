@@ -1,0 +1,71 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Build extension zip
+        run: |
+          UUID=$(grep -oP '"uuid"\s*:\s*"\K[^"]+' metadata.json)
+          ZIP_NAME="${UUID}.shell-extension.zip"
+          
+          # Compile schemas if present
+          if [ -d schemas ] && ls schemas/*.xml 1>/dev/null 2>&1; then
+            glib-compile-schemas schemas/
+          fi
+          
+          # Compile translations if present
+          if [ -d locale ]; then
+            for po in locale/*/LC_MESSAGES/*.po; do
+              if [ -f "$po" ]; then
+                mo="${po%.po}.mo"
+                msgfmt "$po" -o "$mo"
+              fi
+            done
+          fi
+          
+          # Create zip with required files
+          zip -r "$ZIP_NAME" \
+            metadata.json \
+            extension.js \
+            $([ -f prefs.js ] && echo "prefs.js") \
+            $([ -f stylesheet.css ] && echo "stylesheet.css") \
+            $([ -d schemas ] && echo "schemas/") \
+            $([ -d locale ] && echo "locale/")
+          
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+          echo "UUID=$UUID" >> $GITHUB_ENV
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP_NAME }}
+          generate_release_notes: true
+          body: |
+            ## Installation
+            
+            ### From GitHub Release
+            1. Download `${{ env.ZIP_NAME }}`
+            2. Install with: `gnome-extensions install ${{ env.ZIP_NAME }}`
+            3. Log out and log back in (or restart GNOME Shell with Alt+F2, `r`, Enter on X11)
+            4. Enable with: `gnome-extensions enable ${{ env.UUID }}`
+            
+            ### Manual Installation
+            1. Extract the zip to `~/.local/share/gnome-shell/extensions/${{ env.UUID }}/`
+            2. Restart GNOME Shell
+            3. Enable with GNOME Extensions app or `gnome-extensions enable ${{ env.UUID }}`
