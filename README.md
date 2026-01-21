@@ -64,11 +64,16 @@ Currently supported:
 - English
 - Spanish
 
-Adding a new language only requires a `.po` file — no code changes.
+Adding a new language only requires a `.po` file, no code changes.
 
 ## Philosophy
 
 - PulsePick avoids workarounds, compatibility layers, and historical baggage in favor of clarity and stability.
+
+## Screenshot
+
+<img src="PulsePick_Screenshot.png" alt="PulsePick Screenshot" width="300">
+
 
 ## License
 
