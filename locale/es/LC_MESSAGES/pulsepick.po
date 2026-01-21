@@ -1,0 +1,14 @@
+msgid "Output Device"
+msgstr "Dispositivo de salida"
+
+msgid "Input Device"
+msgstr "Dispositivo de entrada"
+
+msgid "General"
+msgstr "General"
+
+msgid "Show inactive devices"
+msgstr "Mostrar dispositivos inactivos"
+
+msgid "Currently unused"
+msgstr "Actualmente sin uso"

@@ -1,0 +1,13 @@
+# Build artifacts
+*.shell-extension.zip
+schemas/gschemas.compiled
+
+# Compiled translations
+locale/**/*.mo
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/

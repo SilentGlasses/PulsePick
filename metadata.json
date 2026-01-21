@@ -1,0 +1,8 @@
+{
+  "uuid": "pulsepick@github.com-silentglasses",
+  "name": "PulsePick",
+  "description": "Minimal audio device and port selector for GNOME Quick Settings.",
+  "shell-version": ["46", "47"],
+  "version": 1,
+  "url": "https://github.com/silentglasses/pulsepick"
+}
