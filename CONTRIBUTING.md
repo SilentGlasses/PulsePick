@@ -57,6 +57,30 @@ To add a new language:
 
 Pull requests that increase complexity without clear benefit may be declined.
 
+## Triggering a Release
+
+The workflow runs when you push a tag starting with v:
+
+1. Make sure your changes are committed
+```
+git add .
+git commit -m "Prepare for v1.0.0 release"
+```
+2. Create and push a version tag
+```
+git tag v1.0.0
+git push origin main
+git push origin v1.0.0
+```
+
+## Version Naming
+
+Use semantic versioning tags:
+
+- `v1.0.0` - Initial stable release
+- `v1.1.0` - New features
+- `v1.0.1` - Bug fixes
+
 ## Code of Conduct
 
 Be respectful and constructive. This is a small project maintained with limited scope and time.
