@@ -2,6 +2,8 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green)
 ![Status: Stable](https://img.shields.io/badge/Status-Stable-brightgreen)
 
+<img src="./icons/pulsepick-logo.svg" alt="PulsePick" width="100">
+
 # PulsePick
 
 PulsePick is a minimal GNOME Shell extension that lets you quickly switch audio input/output devices and ports directly from the system volume menu.
