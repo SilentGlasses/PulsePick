@@ -68,8 +68,7 @@ Adding a new language only requires a `.po` file — no code changes.
 
 ## Philosophy
 
-- PulsePick is a clean rebuild, not a legacy refactor.
-- It avoids workarounds, compatibility layers, and historical baggage in favor of clarity and stability.
+- PulsePick avoids workarounds, compatibility layers, and historical baggage in favor of clarity and stability.
 
 ## License
 
